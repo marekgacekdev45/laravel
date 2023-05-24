@@ -9,7 +9,10 @@
 </head>
 <body>
    @include('layout/partials/nav')
-    @yield('content')
+   <main class="page">
+       @yield('content')
+
+   </main>
     @include('layout/partials/footer')
 </body>
 </html>

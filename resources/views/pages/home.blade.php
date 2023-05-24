@@ -3,5 +3,7 @@
 
 
 @section('content')
-    home page section
+   <main class="homepage">
+    @include('pages.components.home.header')
+   </main>
 @endsection
