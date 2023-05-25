@@ -2,3 +2,9 @@
 
 @import '_global.scss';
 @import '_variable.scss';
+
+
+@import 'partials/_nav.scss';
+
+//pages
+@import './pages/home.scss';
