@@ -1,5 +1,5 @@
 @extends('layout.master')
-@section('title','cart')
+@section('title','login')
 @section('content')
-    cart section page
+   login page
 @endsection
