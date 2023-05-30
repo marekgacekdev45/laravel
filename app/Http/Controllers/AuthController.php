@@ -49,7 +49,7 @@ public function postLogin(Request $request){
   ]);
   //Login
   if(Auth::attempt($details)){
-    return redirect()->intended('home');
+    return redirect()->intended('/');
   }
 
   //Response
