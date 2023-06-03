@@ -93,19 +93,20 @@
                                     </div>
                                 </div>
                             </div>
-<div class="row mb-3">
-    <div class="col-md-12">
-        <div class="form-group">
-            <label for="description">Description</label>
-            <textarea name="description" id="description" cols="30" rows="10" class="form-control @error('description') is-invalid @enderror" placeholder="describe your producst..."></textarea>
-            @error('description')
-            <span class="invalid-fedback">
-                <strong>{{ $message }}</strong>
-            </span>
-        @enderror
-        </div>
-    </div>
-</div>
+                            <div class="row mb-3">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="description">Description</label>
+                                        <textarea name="description" id="description" cols="30" rows="10"
+                                            class="form-control @error('description') is-invalid @enderror" placeholder="describe your producst..."></textarea>
+                                        @error('description')
+                                            <span class="invalid-fedback">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+                                </div>
+                            </div>
                             <div class="form-group text-end">
                                 <button type="submit" class="btn btn-primary">Create</button>
                             </div>

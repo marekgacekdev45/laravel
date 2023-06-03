@@ -40,7 +40,7 @@
                <button type="submit" class="btn btn-primary btn-block">Register</button>
             </div>
 
-
+            <a href="{{route('login')}}">Take back to login</a>
 
          </form>
       </div>

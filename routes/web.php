@@ -21,6 +21,9 @@ use App\Http\Controllers\CategoryController;
 
 Route::get('/', [PagesController::class, 'home'])->name('home');
 Route::get('/cart', [PagesController::class, 'cart'])->name('cart');
+Route::get('/wishlist', [PagesController::class, 'wishlist'])->name('wishlist');
+Route::get('/account', [PagesController::class, 'account'])->name('account')->middleware('auth');
+
 
 //Auth
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login')->middleware('guest');
@@ -31,7 +34,7 @@ Route::post('/login', [AuthController::class, 'postLogin'])->name('login')->midd
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout')->middleware('auth');
 
 //Admin Panel Route
-Route::group(['prefix' => 'adminpanel', 'middlewere' => 'admin'], function () {
+Route::group(['prefix' => 'adminpanel', 'middleware' => 'admin'], function () {
     Route::get('/', [AdminController::class, 'dashboard'])->name('adminpanel');
 
     //products
@@ -39,6 +42,9 @@ Route::group(['prefix' => 'adminpanel', 'middlewere' => 'admin'], function () {
         Route::get('/', [ProductController::class, 'index'])->name('adminpanel.products');
         Route::get('/create', [ProductController::class, 'create'])->name('adminpanel.products.create');
         Route::post('/create', [ProductController::class, 'store'])->name('adminpanel.products.store');
+        Route::get('/{id}', [ProductController::class, 'edit'])->name('adminpanel.products.edit');
+        Route::put('/{id}', [ProductController::class, 'update'])->name('adminpanel.products.edit');
+        Route::delete('/{id}', [ProductController::class, 'destroy'])->name('adminpanel.products.destroy');
     });
     //categories
     Route::group(['prefix' => 'categories'],function(){

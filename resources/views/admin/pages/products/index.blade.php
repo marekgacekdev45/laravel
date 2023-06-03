@@ -1,11 +1,12 @@
 @extends('layout/admin')
 @section('title', 'Products')
-    @section('content')
-        
-    <h1 class="page-title">Products</h1>
+@section('content')
+
+    <h1 class="page-title">
+        Products</h1>
     <div class="container">
         <div class="text-end mb-3">
-            <a href="{{route('adminpanel.products.create')}}"><button class="btn btn-primary">Create Product</button></a>
+            <a href="{{ route('adminpanel.products.create') }}"><button class="btn btn-primary">Create Product</button></a>
 
         </div>
         <div class="row">
@@ -30,25 +31,35 @@
                             </thead>
                             <tbody>
                                 @foreach ($products as $product)
-                                <tr>
-                                    <td>{{$product->id}}</td>
-                                    <td>{{$product->title}}</td>
-                                    <td>{{$product->price}}</td>
-                                    <td>{{$product->category->name}}</td>
-                                    <td>-</td>
-                                    <td>-</td>
-                                    <td>{{\Carbon\Carbon::parse($product->created_at)->format('d/m/Y')}}</td>
-                                    <td>
-                                        -
-                                        {{-- <form action="{{route('adminpanel.product.destroy',$product->id)}}"method="post">
+                                    <tr>
+                                        <td>{{ $product->id }}</td>
+                                        <td>{{ $product->title }}</td>
+                                        <td>{{ $product->price }}</td>
+                                        <td>{{ $product->category->name }}</td>
+                                        <td>
+                                            @foreach ($product->colors as $color)
+                                                <span class="badge"
+                                                    style="background:{{ $color->code }}">{{ $color->name }}</span>
+                                            @endforeach
+                                        </td>
+                                        <td><img src="{{ asset('storage/' . $product->image) }}" alt=""
+                                                style="height:40px"></td>
+                                        <td>{{ \Carbon\Carbon::parse($product->created_at)->format('d/m/Y') }}</td>
+                                        <td>
+                                            <div class="d-flex" style="gap:5px">
+                                            <a href="{{ route('adminpanel.products.edit', $product->id) }}">
+                                                <button class="btn btn-secondary">Edit</button>
+                                            </a>
+                                            <form action="{{route('adminpanel.products.destroy',$product->id)}}"method="post">
                                     @csrf
                                     @method('DELETE')
                                     <button type="submit" class="btn btn-danger">Delete</button>
-                                </form> --}}
-                            </td>
-                                </tr>
+                                </form>
+                            </div>
+                                        </td>
+                                    </tr>
                                 @endforeach
-                               
+
                             </tbody>
                         </table>
                     </div>
