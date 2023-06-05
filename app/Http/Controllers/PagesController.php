@@ -14,6 +14,7 @@ class PagesController extends Controller
     }
     //Cart
     public function cart(){
+       
         return view('pages/cart');
     }
     public function wishlist(){
